@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mpping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping file, it maps a Java class Plan(username,foodid,count) to database table user_plan(user_name,food_id,count) -->
+
+<hibernate-mapping>
+    <class name="Prototype1.Plan" table="user_plan">  <!-- Java class Plan to table user_plan -->
+        <id name="username" column="user_name" type="string" />
+        <property name="foodid" column="food_id" type="int" />
+        <property name="count" column="count" type="int" />
+    </class>
+</hibernate-mapping>
