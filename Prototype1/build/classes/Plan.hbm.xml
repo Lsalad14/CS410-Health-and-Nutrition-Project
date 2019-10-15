@@ -5,8 +5,10 @@
 
 <hibernate-mapping>
     <class name="Prototype1.Plan" table="user_plan">  <!-- Java class Plan to table user_plan -->
-        <id name="username" column="user_name" type="string" />
-        <property name="foodid" column="food_id" type="int" />
+    	<composite-id>
+        	<key-property name="username" column="user_name" type="string" />
+        	<key-property name="foodid" column="food_id" type="int" />
+		</composite-id>
         <property name="count" column="count" type="int" />
     </class>
 </hibernate-mapping>

@@ -1,9 +1,11 @@
 package Prototype1;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -52,16 +54,13 @@ public class PlanManager {
 		Session session = sessionFactory.openSession();
 		String result = "";
 		
-		List<Plan> plans = session.createQuery("from Plan where username='" + username + "'").list();
-		
-		Object[] plan = plans.toArray();
+		Iterator plans = session.createQuery("from Plan where username='" + username + "'").iterate();
 		
 		//Plan[] planArray = (Plan[]) planList.toArray();
 		
-		
-		for (int i=0; i<plan.length; i++) {
-		  
-		  result += ((Plan) plan[i]).getFoodid() + " " + ((Plan) plan[i]).getCount() + " ";
+		while (plans.hasNext()) {
+			Plan plan = (Plan) plans.next();
+			result += plan.getFoodid() + " " + plan.getCount() + " ";
 		}
 		System.out.println(result);
 		

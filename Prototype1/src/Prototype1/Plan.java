@@ -1,6 +1,6 @@
 package Prototype1;
 
-public class Plan {
+public class Plan implements java.io.Serializable {
 
 	private String username;
 	private int foodid;
