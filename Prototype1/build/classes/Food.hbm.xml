@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mpping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping file, it maps a Java class Food(ID,group,name,calories) to database table food(id,group,name,calories) -->
+
+<hibernate-mapping>
+    <class name="Prototype1.Food" table="food">  <!-- Java class Food to table food -->
+        <id name="ID" type="int">
+            <generator class="increment" /> <!-- ID is automatically generated -->
+        </id>
+        <property name="group" column="group" type="string" />
+        <property name="name" column="name" type="string" />
+        <property name="calories" column="calories" type="float" />
+    </class>
+</hibernate-mapping>

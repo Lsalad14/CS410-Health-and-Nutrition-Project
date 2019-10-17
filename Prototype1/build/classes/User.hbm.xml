@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mpping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping file, it maps a Java class User(ID,name,password) to database table user(id,name,password) -->
+
+<hibernate-mapping>
+    <class name="Prototype1.User" table="user">  <!-- Java class User to table user -->
+        <id name="name" column="name" type="string" />
+        <property name="password" column="password" type="string" />
+    </class>
+</hibernate-mapping>
