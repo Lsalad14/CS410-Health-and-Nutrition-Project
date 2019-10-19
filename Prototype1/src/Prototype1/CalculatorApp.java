@@ -31,9 +31,9 @@ public class CalculatorApp extends HttpServlet {
 		planManager.setup();
 		
 		// Check for user input and update the user_plan table
-		if (request.getParameter("param1")!=null && request.getParameter("param2")!=null) {
-			foodid = Integer.parseInt(request.getParameter("param1"));
-			username = request.getParameter("param2");
+		if (request.getParameter("paramFood")!=null && request.getParameter("paramUser")!=null) {
+			foodid = Integer.parseInt(request.getParameter("paramFood"));
+			username = request.getParameter("paramUser");
 			planManager.create(username, foodid);
 		}
 		

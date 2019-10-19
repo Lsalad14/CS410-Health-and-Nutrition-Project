@@ -6,10 +6,32 @@
 <hibernate-mapping>
     <class name="Prototype1.Food" table="food">  <!-- Java class Food to table food -->
         <id name="ID" type="int">
-            <generator class="increment" /> <!-- ID is automatically generated -->
+            <!-- ID is automatically generated -->
         </id>
-        <property name="group" column="group" type="string" />
-        <property name="name" column="name" type="string" />
+        <property name="group" column="food_group" type="string" />
+        <property name="name" column="food_name" type="string" />
+        <property name="protein" column="protein" type="float" />
+        <property name="fat" column="fat" type="float" />
+        <property name="carb" column="carbohydrates" type="float" />
         <property name="calories" column="calories" type="float" />
+        <property name="caffeine" column="caffeine" type="float" />
+        <property name="sugar" column="sugar" type="float" />
+        <property name="fiber" column="fiber" type="float" />
+        <property name="calcium" column="calcium" type="float" />
+        <property name="iron" column="iron" type="float" />
+        <property name="magnesium" column="magnesium" type="float" />
+        <property name="potassium" column="potassium" type="float" />
+        <property name="sodium" column="sodium" type="float" />
+        <property name="zinc" column="zinc" type="float" />
+        <property name="copper" column="copper" type="float" />
+        <property name="manganese" column="manganese" type="float" />
+        <property name="selenium" column="selenium" type="float" />
+        <property name="vita" column="vitamin_a" type="float" />
+        <property name="vite" column="vitamin_e" type="float" />
+        <property name="vitd" column="vitamin_d" type="float" />
+        <property name="vitc" column="vitamin_c" type="float" />
+        <property name="vitb12" column="vitamin_b12" type="float" />
+        <property name="cholesterol" column="cholesterol" type="float" />
+        <property name="satfat" column="saturated_fat" type="float" />
     </class>
 </hibernate-mapping>

@@ -1,5 +1,8 @@
 package Prototype1;
 
+import java.util.Iterator;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -22,21 +25,43 @@ public class FoodManager {
 	}
 	
 	// Return the first 'count' elements of food items in table format
-	protected String read(int count, String username) {
+	protected String read(String keyword, String username) {
 		Session session = sessionFactory.openSession();
-		Food food;
 		String result = "";
 		
-		for (int i=1; i<=count; i++) {
-			food = (Food) session.get(Food.class, i);
-			
+		Query query = session.createQuery("from Food where name like '%"+keyword+"%'");
+		//query.setParameter(0, "%"+keyword+"%");
+		
+		Iterator foodList = query.iterate();
+		
+//		for (int i=1001; i<=(count+1000); i++) {
+//			food = (Food) session.get(Food.class, i);
+//			
+//			result += "<tr>";
+//			result += 
+//				"<td>" + food.getID() + "</td>" + 
+//				"<td>" + food.getGroup() + "</td>" +
+//				"<td>" + food.getName() + "</td>" +
+//				"<td>" + food.getProtein() + "</td>" +
+//				"<td>" + food.getFat() + "</td>" +
+//				"<td>" + food.getCarb() + "</td>" +
+//				"<td>" + food.getCalories() + "</td>" +
+//				"<td><a href=\"localhost:8080/Prototype1/calcApp?paramFood=" + food.getID() + "&paramUser=" + username + "\" target=\"_BLANK\">add</a></td>";
+//			result += "</tr>";
+//		}
+		
+		while (foodList.hasNext()) {
+			Food food = (Food) foodList.next();
 			result += "<tr>";
 			result += 
-				"<td>" + food.getID() + "</td>" + 
-				"<td>" + food.getGroup() + "</td>" +
-				"<td>" + food.getName() + "</td>" +
-				"<td>" + food.getCalories() + "</td>" +
-				"<td><a href=\"localhost:8080/Prototype1/calcApp?param1=" + food.getID() + "&param2=" + username + "\" target=\"_BLANK\">add</a></td>";
+					"<td>" + food.getID() + "</td>" + 
+					"<td>" + food.getGroup() + "</td>" +
+					"<td>" + food.getName() + "</td>" +
+					"<td>" + food.getProtein() + "</td>" +
+					"<td>" + food.getFat() + "</td>" +
+					"<td>" + food.getCarb() + "</td>" +
+					"<td>" + food.getCalories() + "</td>" +
+					"<td><a href=\"localhost:8080/Prototype1/calcApp?paramFood=" + food.getID() + "&paramUser=" + username + "\" target=\"_BLANK\">add</a></td>";
 			result += "</tr>";
 		}
 		

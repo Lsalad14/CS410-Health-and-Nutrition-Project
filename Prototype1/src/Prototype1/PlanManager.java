@@ -54,12 +54,12 @@ public class PlanManager {
 		Session session = sessionFactory.openSession();
 		String result = "";
 		
-		Iterator plans = session.createQuery("from Plan where username='" + username + "'").iterate();
+		Iterator planList = session.createQuery("from Plan where username='" + username + "'").iterate();
 		
 		//Plan[] planArray = (Plan[]) planList.toArray();
 		
-		while (plans.hasNext()) {
-			Plan plan = (Plan) plans.next();
+		while (planList.hasNext()) {
+			Plan plan = (Plan) planList.next();
 			result += plan.getFoodid() + " " + plan.getCount() + " ";
 		}
 		System.out.println(result);
