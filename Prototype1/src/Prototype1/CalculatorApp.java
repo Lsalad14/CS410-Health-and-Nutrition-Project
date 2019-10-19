@@ -35,11 +35,14 @@ public class CalculatorApp extends HttpServlet {
 			foodid = Integer.parseInt(request.getParameter("paramFood"));
 			username = request.getParameter("paramUser");
 			planManager.create(username, foodid);
+		} else if (request.getParameter("paramUser")!=null) {
+			username = request.getParameter("paramUser");
 		}
 		
 		// Read the details of the food in the plan
 		String planTableRows = "";
 		String planTokens = planManager.read(username);
+		String totalTableRow = "";
 		StringTokenizer stk = new StringTokenizer(planTokens);
 		
 		planManager.exit();
@@ -51,6 +54,8 @@ public class CalculatorApp extends HttpServlet {
 			int count = Integer.parseInt(stk.nextToken());
 			planTableRows += foodManager.readPlan(foodid, count);
 		}
+		
+		totalTableRow = foodManager.getTotal();
 		foodManager.exit();
 		
 		//Send back HTML
@@ -60,7 +65,13 @@ public class CalculatorApp extends HttpServlet {
 				out.println(docType +		
 				"<HTML>\n" +
 				"<HEAD><TITLE>Calculator</TITLE></HEAD>\n" +
-				"<BODY BGCOLOR=\"#FDF5E6\">\n");
+				"<BODY>\n");
+				
+				out.println(
+				"<form action=\"healthApp\" target=\"_SELF\" method=\"POST\">" +
+						"<button type=\"submit\">Search Page</button>" +
+						"<input hidden type=\"text\" name=\"userName\" value=\"" + username + "\">" +
+		    	"</form>");
 				
 				out.println(
 				"<table>" +
@@ -68,11 +79,15 @@ public class CalculatorApp extends HttpServlet {
 				"<th>ID</th>" +
 				"<th>Group</th>" +
 				"<th>Name</th>" +
+				"<th>Protein</th>" +
+				"<th>Fat</th>" +
+				"<th>Carbohydrates</th>" +
 				"<th>Calories</th>" +
 				"<th>Count</th>" +
 				"</tr>");
 				
 				out.println(planTableRows);
+				out.println(totalTableRow);
 				
 				out.println("</table>");
 				

@@ -41,7 +41,6 @@ public class HeathApp extends HttpServlet {
 		boolean searchQueried = (request.getParameter("query")!=null);
 		System.out.println("Query checked");
 		
-		// Get the first 11 food items information
 		FoodManager foodManager = new FoodManager();
 		foodManager.setup();
 		
@@ -61,9 +60,20 @@ public class HeathApp extends HttpServlet {
 				out.println(docType +		
 				"<HTML>" +
 				"<HEAD><TITLE>Health and Nutrition Prototype</TITLE>" +
-				"<STYLE></STYLE>" + 
+				"<STYLE>.button {\n" + 
+				"  font: bold 11px Arial;\n" + 
+				"  text-decoration: none;\n" + 
+				"  background-color: #EEEEEE;\n" + 
+				"  color: #333333;\n" + 
+				"  padding: 2px 6px 2px 6px;\n" + 
+				"  border-top: 1px solid #CCCCCC;\n" + 
+				"  border-right: 1px solid #333333;\n" + 
+				"  border-bottom: 1px solid #333333;\n" + 
+				"  border-left: 1px solid #CCCCCC;\n" + 
+				"}</STYLE>" + 
 				"</HEAD><BODY>");
 				
+				// Search bar
 				out.println(
 				"<div class=\"search-container\">" +
 			    "<form action=\"healthApp\" target=\"_self\" method=\"POST\">" +
@@ -73,6 +83,12 @@ public class HeathApp extends HttpServlet {
 			    	"<input hidden type=\"text\" name=\"userPass\" value=\"" + userpass + "\">" + // Clean this up once done
 			    "</form>" +
 			    "</div>");
+				
+				// Link to calcApp without adding new items
+				out.println(
+				"<a href='localhost:8080/Prototype1/calcApp?paramUser=" + username + "' target='_SELF' class='button'>View Plan</a>");
+				
+				
 			if (searchQueried) {
 				out.println(
 				"<table>" +

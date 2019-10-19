@@ -7,7 +7,7 @@
 	<title>Health And Nutrition Prototype</title>
 </head>
 
-<body bgcolor="#fdf5e6">
+<body>
 
 <form action="healthApp" target="_blank" method="POST">
 	<fieldset>
