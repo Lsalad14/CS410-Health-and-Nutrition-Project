@@ -1,11 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html><link type="text/css" id="dark-mode" rel="stylesheet" href=""><style type="text/css" id="dark-mode-custom-style"></style><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html>
+<head>
 	<meta charset="UTF-8">
 	<title>Health And Nutrition Prototype</title>
 </head>
 
-<body cz-shortcut-listen="true">
+<body>
 
 <form action="healthApp" target="_blank" method="POST">
 	<fieldset>
@@ -20,5 +22,5 @@
 	<input type="submit" value="Submit">
 </form>
 
-
-</body></html>
+</body>
+</html>

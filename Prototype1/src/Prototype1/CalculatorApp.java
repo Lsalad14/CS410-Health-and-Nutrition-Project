@@ -31,26 +31,38 @@ public class CalculatorApp extends HttpServlet {
 		planManager.setup();
 		
 		// Check for user input and update the user_plan table
-		if (request.getParameter("param1")!=null && request.getParameter("param2")!=null) {
-			foodid = Integer.parseInt(request.getParameter("param1"));
-			username = request.getParameter("param2");
+		if (request.getParameter("paramFood")!=null && request.getParameter("paramUser")!=null) {
+			foodid = Integer.parseInt(request.getParameter("paramFood"));
+			username = request.getParameter("paramUser");
 			planManager.create(username, foodid);
+		} else if (request.getParameter("paramUser")!=null) {
+			username = request.getParameter("paramUser");
+		}
+		
+		// Check if user wants to delete a food item from plan
+		if (request.getParameter("deleteID")!=null) {
+			foodid = Integer.parseInt(request.getParameter("deleteID"));
+			planManager.delete(username, foodid);
 		}
 		
 		// Read the details of the food in the plan
 		String planTableRows = "";
 		String planTokens = planManager.read(username);
+		String totalTableRow = "";
 		StringTokenizer stk = new StringTokenizer(planTokens);
-		
+
 		planManager.exit();
+		
 		FoodManager foodManager = new FoodManager();
 		foodManager.setup();
 		
 		while (stk.hasMoreTokens()) {
 			foodid = Integer.parseInt(stk.nextToken());
 			int count = Integer.parseInt(stk.nextToken());
-			planTableRows += foodManager.readPlan(foodid, count);
+			planTableRows += foodManager.readPlan(foodid, count, username);
 		}
+		
+		totalTableRow = foodManager.getTotal();
 		foodManager.exit();
 		
 		//Send back HTML
@@ -60,7 +72,13 @@ public class CalculatorApp extends HttpServlet {
 				out.println(docType +		
 				"<HTML>\n" +
 				"<HEAD><TITLE>Calculator</TITLE></HEAD>\n" +
-				"<BODY BGCOLOR=\"#FDF5E6\">\n");
+				"<BODY>\n");
+				
+				out.println(
+				"<form action=\"healthApp\" target=\"_SELF\" method=\"POST\">" +
+						"<button type=\"submit\">Search Page</button>" +
+						"<input hidden type=\"text\" name=\"userName\" value=\"" + username + "\">" +
+		    	"</form>");
 				
 				out.println(
 				"<table>" +
@@ -68,11 +86,16 @@ public class CalculatorApp extends HttpServlet {
 				"<th>ID</th>" +
 				"<th>Group</th>" +
 				"<th>Name</th>" +
+				"<th>Protein</th>" +
+				"<th>Fat</th>" +
+				"<th>Carbohydrates</th>" +
 				"<th>Calories</th>" +
 				"<th>Count</th>" +
+				"<th></th>" +
 				"</tr>");
 				
 				out.println(planTableRows);
+				out.println(totalTableRow);
 				
 				out.println("</table>");
 				
