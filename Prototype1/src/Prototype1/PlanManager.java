@@ -75,8 +75,22 @@ public class PlanManager {
 		
 	}
 	
-	protected void delete() {
+	protected void delete(String username, int foodid) {
+		Session session = sessionFactory.openSession();
 		
+		Transaction transaction = session.beginTransaction();
+		try {
+		  String hql = "delete from Plan where username='" + username + "' AND foodid=" + foodid;
+		  Query query = session.createQuery(hql);
+		  
+		  System.out.println(query.executeUpdate());
+		  
+
+		  transaction.commit();
+		} catch (Throwable t) {
+		  transaction.rollback();
+		  throw t;
+		}
 	}
 
 }

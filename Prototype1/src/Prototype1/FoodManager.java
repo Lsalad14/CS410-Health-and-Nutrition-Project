@@ -74,7 +74,7 @@ public class FoodManager {
 		return result;
 	}
 	
-	protected String readPlan(int foodid, int count) {
+	protected String readPlan(int foodid, int count, String username) {
 		Session session = sessionFactory.openSession();
 		String result = "";
 		
@@ -88,7 +88,8 @@ public class FoodManager {
 			"<td>" + food.getFat() + "</td>" +
 			"<td>" + food.getCarb() + "</td>" +
 			"<td>" + food.getCalories() + "</td>" +
-			"<td>" + count + "</td>";
+			"<td>" + count + "</td>" +
+			"<td><a href=\"localhost:8080/Prototype1/calcApp?deleteID=" + food.getID() + "&paramUser=" + username + "\" target=\"_SELF\">delete</a></td>";
 		result += "</tr>";
 		
 		planItems.add(food);

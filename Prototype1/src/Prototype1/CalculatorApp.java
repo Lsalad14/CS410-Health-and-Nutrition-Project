@@ -39,20 +39,27 @@ public class CalculatorApp extends HttpServlet {
 			username = request.getParameter("paramUser");
 		}
 		
+		// Check if user wants to delete a food item from plan
+		if (request.getParameter("deleteID")!=null) {
+			foodid = Integer.parseInt(request.getParameter("deleteID"));
+			planManager.delete(username, foodid);
+		}
+		
 		// Read the details of the food in the plan
 		String planTableRows = "";
 		String planTokens = planManager.read(username);
 		String totalTableRow = "";
 		StringTokenizer stk = new StringTokenizer(planTokens);
-		
+
 		planManager.exit();
+		
 		FoodManager foodManager = new FoodManager();
 		foodManager.setup();
 		
 		while (stk.hasMoreTokens()) {
 			foodid = Integer.parseInt(stk.nextToken());
 			int count = Integer.parseInt(stk.nextToken());
-			planTableRows += foodManager.readPlan(foodid, count);
+			planTableRows += foodManager.readPlan(foodid, count, username);
 		}
 		
 		totalTableRow = foodManager.getTotal();
@@ -84,6 +91,7 @@ public class CalculatorApp extends HttpServlet {
 				"<th>Carbohydrates</th>" +
 				"<th>Calories</th>" +
 				"<th>Count</th>" +
+				"<th></th>" +
 				"</tr>");
 				
 				out.println(planTableRows);
