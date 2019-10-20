@@ -1,10 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html><link type="text/css" id="dark-mode" rel="stylesheet" href=""><style type="text/css" id="dark-mode-custom-style"></style><head>
 <meta http-equiv="content-type" content="text/html; charset=windows-1252"><title>Calculator</title></head>
-<body cz-shortcut-listen="true" bgcolor="#FDF5E6">
+<body cz-shortcut-listen="true">
 
-<table><tbody><tr><th>ID</th><th>Group</th><th>Name</th><th>Calories</th><th>Count</th></tr>
-<tr><td>1</td><td>Dairy and Egg Products</td><td>Butter, salted</td><td>717.0</td><td>1</td></tr><tr><td>3</td><td>Dairy and Egg Products</td><td>Butter oil, anhydrous</td><td>876.0</td><td>1</td></tr><tr><td>4</td><td>Dairy and Egg Products</td><td>Cheese, blue</td><td>353.0</td><td>1</td></tr>
+<form action="healthApp" target="_SELF" method="POST"><button type="submit">Search Page</button><input type="text" name="userName" value="admin" hidden=""></form>
+<table><tbody><tr><th>ID</th><th>Group</th><th>Name</th><th>Protein</th><th>Fat</th><th>Carbohydrates</th><th>Calories</th><th>Count</th><th></th></tr>
+<tr><td>1002</td><td>Dairy and Egg Products</td><td>Butter, whipped, with salt</td><td>0.49</td><td>78.3</td><td>2.87</td><td>718.0</td><td>1</td><td><a href="localhost:8080/Prototype1/calcApp?deleteID=1002&amp;paramUser=admin" target="_SELF">delete</a></td></tr><tr><td>5000</td><td>Poultry Products</td><td>Chicken, broiler, rotisserie, BBQ, breast meat only</td><td>28.04</td><td>3.57</td><td>0.0</td><td>144.0</td><td>1</td><td><a href="localhost:8080/Prototype1/calcApp?deleteID=5000&amp;paramUser=admin" target="_SELF">delete</a></td></tr><tr><td>11196</td><td>Vegetables and Vegetable Products</td><td>Cowpeas (blackeyes), immature seeds, frozen, cooked, boiled, drained, without salt</td><td>8.49</td><td>0.66</td><td>23.76</td><td>132.0</td><td>1</td><td><a href="localhost:8080/Prototype1/calcApp?deleteID=11196&amp;paramUser=admin" target="_SELF">delete</a></td></tr>
+<tr><td></td><td></td><td>Total</td><td>37.02</td><td>82.53</td><td>26.63</td><td>994.00</td><td></td></tr>
 </tbody></table>
 
 </body></html>
