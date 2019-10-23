@@ -59,40 +59,57 @@ public class HeathApp extends HttpServlet {
 		
 				out.println(docType +		
 				"<HTML>" +
-				"<HEAD><TITLE>Health and Nutrition Prototype</TITLE>" +
-				"<STYLE>.button {\n" + 
-				"  font: bold 11px Arial;\n" + 
-				"  text-decoration: none;\n" + 
-				"  background-color: #EEEEEE;\n" + 
-				"  color: #333333;\n" + 
-				"  padding: 2px 6px 2px 6px;\n" + 
-				"  border-top: 1px solid #CCCCCC;\n" + 
-				"  border-right: 1px solid #333333;\n" + 
-				"  border-bottom: 1px solid #333333;\n" + 
-				"  border-left: 1px solid #CCCCCC;\n" + 
-				"}</STYLE>" + 
+				"<HEAD><TITLE>Search Page</TITLE>" +
+				"<script src=\"js/jquery.min.js\"></script>\n" + 
+				"<script src=\"js/skel.min.js\"></script>\n" + 
+				"<script src=\"js/skel-layers.min.js\"></script>\n" + 
+				"<script src=\"js/init.js\"></script>\n" + 
+				"<noscript>\n" + 
+				"	<link rel=\"stylesheet\" href=\"css/skel.css\" />\n" + 
+				"	<link rel=\"stylesheet\" href=\"css/style.css\" />\n" + 
+				"	<link rel=\"stylesheet\" href=\"css/style-xlarge.css\" />\n" + 
+				"</noscript>" +
 				"</HEAD><BODY>");
+				
+				// Nav bar
+				out.println(
+				"			<header id=\"header\">\n" + 
+				"				<h1><a href=\"index.html\">Health and Nutrition</a></h1>\n" + 
+				"				<nav id=\"nav\">\n" + 
+				"					<ul>\n" + 
+				"						<li><a href='index.jsp'>Home</a></li>\n" + 
+				"						<li><a href='localhost:8080/Prototype1/calcApp?paramUser=" + username + "' target='_SELF' class='button'>Calculator</a>\"</li>\n" + 
+				"					</ul>\n" + 
+				"				</nav>\n" + 
+				"			</header>");
+				
+				out.println(
+				"			<section id=\"main\" class=\"wrapper\">\n" + 
+				"				<div class=\"container\">\n" +
+				"					<header class=\"major\">\n" + 
+				"						<h2>Create Your Meals</h2>\n" + 
+				"						<p>organzie it to your style</p>\n" + 
+				"					</header>\n" + 
+				"					<a href=\"#\" class=\"image fit\"><img src=\"images/pic09.jpg\" alt=\"\" /></a>\n" + 
+				"				</div>\n" + 
+				"			</section>");
 				
 				// Search bar
 				out.println(
 				"<div class=\"search-container\">" +
 			    "<form action=\"healthApp\" target=\"_self\" method=\"POST\">" +
-			    	"<input type=\"text\" placeholder=\"Search..\" name=\"query\">" +
-			    	"<button type=\"submit\">Submit</button>" +
-			    	"<input hidden type=\"text\" name=\"userName\" value=\"" + username + "\">" +
-			    	"<input hidden type=\"text\" name=\"userPass\" value=\"" + userpass + "\">" + // Clean this up once done
+			    	"<input type=\"text\" placeholder=\"Search..\" name=\"query\"><br>" +
+			    	"<button type=\"submit\" class='button'>Submit</button>" +
+			    	"<input hidden type=\"text\" name=\"userName\" value=\"" + username + "\" class='hide'>" +
+			    	"<input hidden type=\"text\" name=\"userPass\" value=\"" + userpass + "\" class='hide'>" + // Clean this up once done
 			    "</form>" +
 			    "</div>");
 				
-				// Link to calcApp without adding new items
-				out.println(
-				"<a href='localhost:8080/Prototype1/calcApp?paramUser=" + username + "' target='_SELF' class='button'>View Plan</a>");
-				
-				
 			if (searchQueried) {
 				out.println(
-				"<table>" +
-				"<tr>" +
+				"<section>\n" + 
+				"<div class='table-wrapper'>\n" + 
+				"<table class='alt'>"+
 				"<th>ID</th>" +
 				"<th>Group</th>" +
 				"<th>Name</th>" +
@@ -104,7 +121,7 @@ public class HeathApp extends HttpServlet {
 				"</tr>");
 				
 				out.println(foodTableRows);
-				out.println("</table>");
+				out.println("</table></div></section>");
 			}
 				out.println(
 				"</BODY></HTML>");
