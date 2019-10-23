@@ -35,12 +35,12 @@
 		line-height: 1.65em;
 	}
 
-	a {
+	a, .nav-button {
 		color: #383b43;
 		text-decoration: none;
 	}
 
-		a:active, a:hover {
+		a:active, a:hover, .nav-button:active, .nav-button:hover {
 			text-decoration: underline;
 		}
 
@@ -157,6 +157,10 @@
 
 	.align-right {
 		text-align: right;
+	}
+	.hide {
+		visibility: hidden;
+		display: none;
 	}
 
 /* Section/Article */

@@ -69,19 +69,45 @@ public class CalculatorApp extends HttpServlet {
 		String docType =
 				"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 " +
 				"Transitional//EN\">\n";
-				out.println(docType +		
-				"<HTML>\n" +
-				"<HEAD><TITLE>Calculator</TITLE></HEAD>\n" +
-				"<BODY>\n");
+		
+		out.println(docType +		
+				"<HTML>" +
+				"<HEAD><TITLE>Calculator Page</TITLE>" +
+				"<script src=\"js/jquery.min.js\"></script>\n" + 
+				"<script src=\"js/skel.min.js\"></script>\n" + 
+				"<script src=\"js/skel-layers.min.js\"></script>\n" + 
+				"<script src=\"js/init.js\"></script>\n" + 
+				"<noscript>\n" + 
+				"	<link rel=\"stylesheet\" href=\"css/skel.css\" />\n" + 
+				"	<link rel=\"stylesheet\" href=\"css/style.css\" />\n" + 
+				"	<link rel=\"stylesheet\" href=\"css/style-xlarge.css\" />\n" + 
+				"</noscript>" +
+				"</HEAD><BODY>");
+		
+		// Nav bar
+		out.println(
+		"			<header id=\"header\">\n" + 
+		"				<h1><a href=\"index.html\">Health and Nutrition</a></h1>\n" + 
+		"				<nav id=\"nav\">\n" + 
+		"					<ul>\n" + 
+		"						<li><a href='index.jsp'>Home</a></li>\n" + 
+		"						<li><form action='healthApp' target='_SELF' method='POST'>"+ 
+		"						<button type='submit' class='nav-button'>Search Page</button>" + 
+		"						<input hidden type='text' name='userName' class='hide' value='" + username + "'>"+ 
+		"		    	</form></li>" + 
+		"					</ul>\n" + 
+		"				</nav>\n" + 
+		"			</header>");
+				
+//				out.println(
+//				"<form action=\"healthApp\" target=\"_SELF\" method=\"POST\">" +
+//						"<button type=\"submit\">Search Page</button>" +
+//						"<input hidden type=\"text\" name=\"userName\" value=\"" + username + "\">" +
+//		    	"</form>");
 				
 				out.println(
-				"<form action=\"healthApp\" target=\"_SELF\" method=\"POST\">" +
-						"<button type=\"submit\">Search Page</button>" +
-						"<input hidden type=\"text\" name=\"userName\" value=\"" + username + "\">" +
-		    	"</form>");
-				
-				out.println(
-				"<table>" +
+				"<section><div class='table-wrapper'>" +
+				"<table class='alt'>" +
 				"<tr>" +
 				"<th>ID</th>" +
 				"<th>Group</th>" +
@@ -97,7 +123,7 @@ public class CalculatorApp extends HttpServlet {
 				out.println(planTableRows);
 				out.println(totalTableRow);
 				
-				out.println("</table>");
+				out.println("</table></div></section>");
 				
 				out.println(
 				"</BODY></HTML>");
