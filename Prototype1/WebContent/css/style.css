@@ -779,6 +779,35 @@
 			table.alt tfoot {
 				border-top: 0;
 			}
+			
+/* Tooltip container */
+.tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	top: -5px;
+	left: 105%;
+	background-color: black;
+	color: #fff;
+	text-align: left;
+	padding: 5px 0;
+	border-radius: 6px;
+	
+	/* Position of tooltip text */
+	position: absolute;
+	z-index: 1;
+}
+
+/* Show tooltip when mouse hover over */
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
 
 /* Button */
 

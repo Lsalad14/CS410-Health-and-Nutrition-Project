@@ -28,6 +28,8 @@ public class HeathApp extends HttpServlet {
 		String username = request.getParameter("userName");;
 		String userpass = request.getParameter("userPassword");
 		
+		// TODO add username, userpass getter via local JSON
+		
 		UserManager userManager = new UserManager();
 		userManager.setup();
 		boolean isVerified = userManager.read(username, userpass);
@@ -70,6 +72,14 @@ public class HeathApp extends HttpServlet {
 				"	<link rel=\"stylesheet\" href=\"css/style-xlarge.css\" />\n" + 
 				"</noscript>" +
 				"</HEAD><BODY>");
+				
+				out.println(
+						"<script>" +
+							"var myObj, myJSON" +
+							"myObj = { username: \""+username+"\", userpass: \""+userpass+"\"};" +
+							"myJSON = JSON.stringify(myObj);" +
+							"localStorage.setItem(\"entry\", myJSON);" +
+						"</script>");
 				
 				// Nav bar
 				out.println(

@@ -29,12 +29,12 @@ public class FoodManager {
 		
 	}
 	
-	// Return the first 'count' elements of food items in table format
+	// Return search query in table format
 	protected String read(String keyword, String username) {
 		Session session = sessionFactory.openSession();
 		String result = "";
 		
-		Query query = session.createQuery("from Food where name like '%"+keyword+"%'");
+		Query query = session.createQuery("from Food where name like '% "+keyword+" %'");
 		//query.setParameter(0, "%"+keyword+"%");
 		
 		Iterator foodList = query.iterate();
@@ -59,7 +59,32 @@ public class FoodManager {
 			Food food = (Food) foodList.next();
 			result += "<tr>";
 			result += 
-					"<td>" + food.getID() + "</td>" + 
+				"<td class='tooltip'>" + food.getID() + 
+					"<span class='tooltiptext'>" +
+					"Protein: " + food.getProtein() + " g<br>" +
+					"Fat: " + food.getFat() + " g<br>" +
+					"Carbohydrates: " + food.getCarb() + " g<br>" +
+					"Calories: " + food.getCalories() + " kCal<br>" +
+					"Caffeine: " + food.getCaffeine() + " mg<br>" +
+					"Sugar: " + food.getSugar() + " g<br>" +
+					"Fiber: " + food.getFiber() + " g<br>" +
+					"Calcium: " + food.getCalcium() + " mg<br>" +
+					"Iron: " + food.getIron() + " mg<br>" +
+					"Magnesium: " + food.getMagnesium() + " mg<br>" +
+					"Potassium: " + food.getPotassium() + " mg<br>" +
+					"Sodium: " + food.getSodium() + " mg<br>" +
+					"Zinc: " + food.getZinc() + " mg<br>" +
+					"Copper: " + food.getCopper() + " mg<br>" +
+					"Manganese: " + food.getManganese() + " mg<br>" +
+					"Selenium: " + food.getSelenium() + " mcg<br>" +
+					"Vitamin A: " + food.getVita() + " IU<br>" +
+					"Vitamin E: " + food.getVite() + " mg<br>" +
+					"Vitamin D: " + food.getVitd() + " mcg<br>" +
+					"Vitamin C: " + food.getVitc() + " mg<br>" +
+					"Vitamin B12: " + food.getVitb12() + " mg<br>" +
+					"Cholesterol: " + food.getCholesterol() + " mg<br>" +
+					"Saturated fat: " + food.getSatfat() + " g<br>" +
+				"</span></td>" +
 					"<td>" + food.getGroup() + "</td>" +
 					"<td>" + food.getName() + "</td>" +
 					"<td>" + food.getProtein() + "</td>" +
@@ -74,6 +99,7 @@ public class FoodManager {
 		return result;
 	}
 	
+	// Return food items in a user's plan in table format
 	protected String readPlan(int foodid, int count, String username) {
 		Session session = sessionFactory.openSession();
 		String result = "";
@@ -81,7 +107,32 @@ public class FoodManager {
 		Food food = (Food) session.get(Food.class, foodid);
 		result += "<tr>";
 		result += 
-			"<td>" + food.getID() + "</td>" + 
+			"<td class='tooltip'>" + food.getID() + 
+					"<span class='tooltiptext'>" +
+					"Protein: " + food.getProtein() + " g<br>" +
+					"Fat: " + food.getFat() + " g<br>" +
+					"Carbohydrates: " + food.getCarb() + " g<br>" +
+					"Calories: " + food.getCalories() + " kCal<br>" +
+					"Caffeine: " + food.getCaffeine() + " mg<br>" +
+					"Sugar: " + food.getSugar() + " g<br>" +
+					"Fiber: " + food.getFiber() + " g<br>" +
+					"Calcium: " + food.getCalcium() + " mg<br>" +
+					"Iron: " + food.getIron() + " mg<br>" +
+					"Magnesium: " + food.getMagnesium() + " mg<br>" +
+					"Potassium: " + food.getPotassium() + " mg<br>" +
+					"Sodium: " + food.getSodium() + " mg<br>" +
+					"Zinc: " + food.getZinc() + " mg<br>" +
+					"Copper: " + food.getCopper() + " mg<br>" +
+					"Manganese: " + food.getManganese() + " mg<br>" +
+					"Selenium: " + food.getSelenium() + " mcg<br>" +
+					"Vitamin A: " + food.getVita() + " IU<br>" +
+					"Vitamin E: " + food.getVite() + " mg<br>" +
+					"Vitamin D: " + food.getVitd() + " mcg<br>" +
+					"Vitamin C: " + food.getVitc() + " mg<br>" +
+					"Vitamin B12: " + food.getVitb12() + " mg<br>" +
+					"Cholesterol: " + food.getCholesterol() + " mg<br>" +
+					"Saturated fat: " + food.getSatfat() + " g<br>" +
+					"</span></td>" +
 			"<td>" + food.getGroup() + "</td>" +
 			"<td>" + food.getName() + "</td>" +
 			"<td>" + food.getProtein() + "</td>" +
