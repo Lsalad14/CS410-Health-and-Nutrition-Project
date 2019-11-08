@@ -36,7 +36,7 @@
 					<input type="text" name="userName">
 	
 					<p>Password: </p>
-					<input type="text" name="userPassword">
+					<input type="password" name="userPassword">
 				</fieldset>
 	
 				<input type="submit" value="Submit">
