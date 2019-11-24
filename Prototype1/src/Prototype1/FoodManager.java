@@ -17,20 +17,20 @@ public class FoodManager {
 	
 	private List<Food> planItems = new ArrayList<Food> ();
 	
-	protected void setup() {
+	public void setup() {
 		sessionFactory = new Configuration().configure().buildSessionFactory();
 	}
 	
-	protected void exit() {
+	public void exit() {
 		sessionFactory.close();
 	}
 	
-	protected void create() {
+	public void create() {
 		
 	}
 	
 	// Return search query in table format
-	protected String read(String keyword, String username) {
+	public String read(String keyword, String username) {
 		Session session = sessionFactory.openSession();
 		String result = "";
 		
@@ -51,7 +51,7 @@ public class FoodManager {
 //				"<td>" + food.getFat() + "</td>" +
 //				"<td>" + food.getCarb() + "</td>" +
 //				"<td>" + food.getCalories() + "</td>" +
-//				"<td><a href=\"localhost:8080/Prototype1/calcApp?paramFood=" + food.getID() + "&paramUser=" + username + "\" target=\"_BLANK\">add</a></td>";
+//				"<td><a href=\"localhost:8080/Prototype1/calcapp.jsp?paramFood=" + food.getID() + " target=\"_BLANK\">add</a></td>";
 //			result += "</tr>";
 //		}
 		
@@ -91,7 +91,7 @@ public class FoodManager {
 					"<td>" + food.getFat() + "</td>" +
 					"<td>" + food.getCarb() + "</td>" +
 					"<td>" + food.getCalories() + "</td>" +
-					"<td><a href=\"localhost:8080/Prototype1/calcApp?paramFood=" + food.getID() + "&paramUser=" + username + "\" target=\"_SELF\">add</a></td>";
+					"<td><a href=\"localhost:8080/Prototype1/calcapp.jsp?paramFood=" + food.getID() + "\" target='_blank'>add</a></td>";
 			result += "</tr>";
 		}
 		
@@ -100,7 +100,7 @@ public class FoodManager {
 	}
 	
 	// Return food items in a user's plan in table format
-	protected String readPlan(int foodid, int count, String username) {
+	public String readPlan(int foodid, int count, String username) {
 		Session session = sessionFactory.openSession();
 		String result = "";
 		
@@ -140,7 +140,7 @@ public class FoodManager {
 			"<td>" + food.getCarb() + "</td>" +
 			"<td>" + food.getCalories() + "</td>" +
 			"<td>" + count + "</td>" +
-			"<td><a href=\"localhost:8080/Prototype1/calcApp?deleteID=" + food.getID() + "&paramUser=" + username + "\" target=\"_SELF\">delete</a></td>";
+			"<td><a href=\"localhost:8080/Prototype1/calcapp.jsp?deleteID=" + food.getID() + "\" target='_blank'>delete</a></td>";
 		result += "</tr>";
 		
 		planItems.add(food);
@@ -178,11 +178,11 @@ public class FoodManager {
 		return result;
 	}
 	
-	protected void update() {
+	public void update() {
 		
 	}
 	
-	protected void delete() {
+	public  void delete() {
 		
 	}
 }

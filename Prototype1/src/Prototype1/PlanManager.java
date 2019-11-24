@@ -15,15 +15,15 @@ public class PlanManager {
 	
 	protected SessionFactory sessionFactory;
 	
-	protected void setup() {
+	public void setup() {
 		sessionFactory = new Configuration().configure().buildSessionFactory();
 	}
 	
-	protected void exit() {
+	public void exit() {
 		sessionFactory.close();
 	}
 	
-	protected void create(String username, int foodid) {
+	public void create(String username, int foodid) {
 		Session session = sessionFactory.openSession();
 		
 		Plan plan = new Plan();
@@ -50,7 +50,7 @@ public class PlanManager {
 		}
 	}
 	
-	protected String read(String username) {
+	public String read(String username) {
 		Session session = sessionFactory.openSession();
 		String result = "";
 		
@@ -71,11 +71,11 @@ public class PlanManager {
 		return result;
 	}
 	
-	protected void update() {
+	public void update() {
 		
 	}
 	
-	protected void delete(String username, int foodid) {
+	public void delete(String username, int foodid) {
 		Session session = sessionFactory.openSession();
 		
 		Transaction transaction = session.beginTransaction();

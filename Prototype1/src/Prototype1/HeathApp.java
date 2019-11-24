@@ -23,38 +23,6 @@ public class HeathApp extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		
-		// Check for valid user name and password
-		String username = request.getParameter("userName");;
-		String userpass = request.getParameter("userPassword");
-		
-		// TODO add username, userpass getter via local JSON
-		
-		UserManager userManager = new UserManager();
-		userManager.setup();
-		boolean isVerified = userManager.read(username, userpass);
-		userManager.exit();
-		
-		if (isVerified)
-			System.out.println("User authentication passed.");
-		else System.out.println("User authentication failed.");
-		
-		// Search for a food item
-		boolean searchQueried = (request.getParameter("query")!=null);
-		System.out.println("Query checked");
-		
-		FoodManager foodManager = new FoodManager();
-		foodManager.setup();
-		
-		//String foodTableRows = foodManager.read(11, username);
-		String foodTableRows = "";
-		
-		if (searchQueried) {
-			foodTableRows = foodManager.read(request.getParameter("query"), username);
-		}
-		foodManager.exit();
-		
-		// Send back HTML
 		String docType =
 				"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 " +
 				"Transitional//EN\">\n";
@@ -72,7 +40,40 @@ public class HeathApp extends HttpServlet {
 				"	<link rel=\"stylesheet\" href=\"css/style-xlarge.css\" />\n" + 
 				"</noscript>" +
 				"</HEAD><BODY>");
-				
+		
+		// Check for valid user name and password
+		String username = request.getParameter("userName");;
+		String userpass = request.getParameter("userPassword");
+		
+		UserManager userManager = new UserManager();
+		userManager.setup();
+		boolean isVerified = userManager.read(username, userpass);
+		userManager.exit();
+		
+		if (isVerified)
+			System.out.println("User authentication passed.");
+		else {
+			System.out.println("User authentication failded.");
+			out.println("<script type=\"text/javascript\">window.location.replace(\"registration.jsp\");</script>");
+		}
+		
+		// Search for a food item
+		boolean searchQueried = (request.getParameter("query")!=null);
+		System.out.println("Query checked");
+		
+		FoodManager foodManager = new FoodManager();
+		foodManager.setup();
+		
+		//String foodTableRows = foodManager.read(11, username);
+		String foodTableRows = "";
+		
+		if (searchQueried) {
+			foodTableRows = foodManager.read(request.getParameter("query"), username);
+		}
+		foodManager.exit();
+		
+		// Send back HTML
+				/*
 				out.println(
 						"<script>" +
 							"var myObj, myJSON" +
@@ -80,7 +81,7 @@ public class HeathApp extends HttpServlet {
 							"myJSON = JSON.stringify(myObj);" +
 							"localStorage.setItem(\"entry\", myJSON);" +
 						"</script>");
-				
+				*/
 				// Nav bar
 				out.println(
 				"			<header id=\"header\">\n" + 
