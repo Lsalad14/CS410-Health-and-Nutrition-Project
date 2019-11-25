@@ -63,6 +63,18 @@ while (stk.hasMoreTokens()) {
 	
 	planTableRows += foodManager.readPlan(foodid, count, username);
 }
+
+while (foodManager.hasNext()) {
+	int nextfoodid = foodManager.getNextFoodid();
+	int size = 4;
+	if (request.getParameter(nextfoodid+"")!=null) {
+		size = Integer.parseInt(request.getParameter(nextfoodid+""));
+		
+	}
+	foodManager.calculateTotalWithServing(size);
+	foodManager.incrementsFoodid();
+}
+
 totalTableRow = foodManager.getTotal();
 
 foodManager.exit();
@@ -70,21 +82,24 @@ foodManager.exit();
 
 	<section>
 		<div class="table-wrapper">
-			<table class="alt">
-				<tr>
-				<th>ID</th>
-				<th>Group</th>
-				<th>Name</th>
-				<th>Protein</th>
-				<th>Fat</th>
-				<th>Carbohydrates</th>
-				<th>Calories</th>
-				<th>Count</th>
-				<th></th>
-				</tr>
-				<%= planTableRows %>
-				<%= totalTableRow %>
-			</table>
+			<form action="calcapp.jsp" method="get">
+				<table class="alt">
+					<tr>
+					<th>ID</th>
+					<th>Group</th>
+					<th>Name</th>
+					<th>Protein</th>
+					<th>Fat</th>
+					<th>Carbohydrates</th>
+					<th>Calories</th>
+					<th>Serving Size</th>
+					<th></th>
+					</tr>
+					<%= planTableRows %>
+					<%= totalTableRow %>
+				</table>
+				<input type="submit" value="Calculate">
+			</form>
 		</div>
 	</section>
 

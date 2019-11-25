@@ -66,6 +66,7 @@ if (request.getParameter("query")!=null) {
 				<th>Fat</th>
 				<th>Carbohydrates</th>
 				<th>Calories</th>
+				<th>Serving Size</th>
 				<th></th>
 				</tr>
 				<%= foodTableRows %>
