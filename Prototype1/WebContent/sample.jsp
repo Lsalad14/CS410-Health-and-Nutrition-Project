@@ -26,31 +26,35 @@
 		<nav id="nav">
 			<ul>
 				<li><a href="index.jsp">Home</a></li>
-				<li><a href="sample.jsp">Sample Plans</a></li>
 				<li><a href="healthapp.jsp">Search Page</a></li>
+				<li><a href="calcapp.jsp">Calculator</a></li>
 			</ul>
 		</nav>
 	</header>
 	
+	<div class="search-container">
+		<form action="sample.jsp" method="get">
+			<select name="prebuiltid">
+				<option value="sample1" selected>Plan 1</option>
+				<option value="sample2">Plan 2</option>
+			</select>
+			<button type="submit" class="button" name="view" value="view">View plan</button>
+			<button type="submit" class="button" name="add" value="add">Add to my plan</button>
+		</form>
+	</div>
+	
 <%
 int foodid;
 String username = (String) session.getAttribute("username");
+String prebuiltid = request.getParameter("prebuiltid");
 
 String planTableRows = "";
 String totalTableRow = "";
 
 PlanManager planManager = new PlanManager();
 planManager.setup();
-if (request.getParameter("paramFood")!=null) {
-	foodid = Integer.parseInt(request.getParameter("paramFood"));
-	planManager.create(username, foodid);
-}
-else if (request.getParameter("deleteID")!=null) {
-	foodid = Integer.parseInt(request.getParameter("deleteID"));
-	planManager.delete(username, foodid);
-}
 
-String planTokens = planManager.read(username);
+String planTokens = planManager.read(prebuiltid);
 StringTokenizer stk = new StringTokenizer(planTokens);
 
 planManager.exit();
@@ -62,7 +66,7 @@ while (stk.hasMoreTokens()) {
 	foodid = Integer.parseInt(stk.nextToken());
 	int count = Integer.parseInt(stk.nextToken());
 	
-	planTableRows += foodManager.readPlan(foodid, count, username);
+	planTableRows += foodManager.readPlan(foodid, count, prebuiltid);
 }
 
 while (foodManager.hasNext()) {
@@ -79,6 +83,24 @@ while (foodManager.hasNext()) {
 totalTableRow = foodManager.getTotal();
 
 foodManager.exit();
+
+if (request.getParameter("add") != null) {
+	if (request.getParameter("add").equals("add")) {
+		planManager = new PlanManager();
+		planManager.setup();
+	
+		planTokens = planManager.read(prebuiltid);
+		stk = new StringTokenizer(planTokens);
+		
+		while (stk.hasMoreTokens()) {
+			foodid = Integer.parseInt(stk.nextToken());
+			int count = Integer.parseInt(stk.nextToken());
+			planManager.create(username, foodid);
+		}
+	
+		planManager.exit();
+	}
+}
 %>
 
 	<section>

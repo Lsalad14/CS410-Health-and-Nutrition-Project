@@ -129,12 +129,67 @@ public class FoodManager {
 			"<td>" + food.getCalories() + "</td>" +
 			"<td><select name='"+food.getID()+"'>\n" + 
 			"    <option value='1'>1 ounce</option>\n" + 
-			"    <option value='4'>4 ounce</option>\n" + 
+			"    <option value='4' selected>4 ounce</option>\n" + 
 			"    <option value='8'>8 ounce</option>\n" + 
 			"    <option value='12'>12 ounce</option>\n" + 
 			"	 <option value='16'>16 ounce</option>\n" +
 			"</select></td>" +
 			"<td><a href=\"localhost:8080/Prototype1/calcapp.jsp?deleteID=" + food.getID() + "\" target='_blank'>delete</a></td>";
+		result += "</tr>";
+		
+		planItems.add(food);
+		
+		session.close();
+		return result;
+	}
+	
+	// Read sample plans
+	public String readPrebuiltPlan(int foodid, int count, String username) {
+		Session session = sessionFactory.openSession();
+		String result = "";
+		
+		Food food = (Food) session.get(Food.class, foodid);
+		result += "<tr>";
+		result += 
+			"<td class='tooltip'>" + food.getID() + 
+					"<span class='tooltiptext'>" +
+					"Protein: " + food.getProtein() + " g<br>" +
+					"Fat: " + food.getFat() + " g<br>" +
+					"Carbohydrates: " + food.getCarb() + " g<br>" +
+					"Calories: " + food.getCalories() + " kCal<br>" +
+					"Caffeine: " + food.getCaffeine() + " mg<br>" +
+					"Sugar: " + food.getSugar() + " g<br>" +
+					"Fiber: " + food.getFiber() + " g<br>" +
+					"Calcium: " + food.getCalcium() + " mg<br>" +
+					"Iron: " + food.getIron() + " mg<br>" +
+					"Magnesium: " + food.getMagnesium() + " mg<br>" +
+					"Potassium: " + food.getPotassium() + " mg<br>" +
+					"Sodium: " + food.getSodium() + " mg<br>" +
+					"Zinc: " + food.getZinc() + " mg<br>" +
+					"Copper: " + food.getCopper() + " mg<br>" +
+					"Manganese: " + food.getManganese() + " mg<br>" +
+					"Selenium: " + food.getSelenium() + " mcg<br>" +
+					"Vitamin A: " + food.getVita() + " IU<br>" +
+					"Vitamin E: " + food.getVite() + " mg<br>" +
+					"Vitamin D: " + food.getVitd() + " mcg<br>" +
+					"Vitamin C: " + food.getVitc() + " mg<br>" +
+					"Vitamin B12: " + food.getVitb12() + " mg<br>" +
+					"Cholesterol: " + food.getCholesterol() + " mg<br>" +
+					"Saturated fat: " + food.getSatfat() + " g<br>" +
+					"</span></td>" +
+			"<td>" + food.getGroup() + "</td>" +
+			"<td>" + food.getName() + "</td>" +
+			"<td>" + food.getProtein() + "</td>" +
+			"<td>" + food.getFat() + "</td>" +
+			"<td>" + food.getCarb() + "</td>" +
+			"<td>" + food.getCalories() + "</td>" +
+			"<td><select name='"+food.getID()+"'>\n" + 
+			"    <option value='1'>1 ounce</option>\n" + 
+			"    <option value='4' selected>4 ounce</option>\n" + 
+			"    <option value='8'>8 ounce</option>\n" + 
+			"    <option value='12'>12 ounce</option>\n" + 
+			"	 <option value='16'>16 ounce</option>\n" +
+			"</select></td>";
 		result += "</tr>";
 		
 		planItems.add(food);

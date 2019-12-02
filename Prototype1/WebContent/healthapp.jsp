@@ -25,6 +25,7 @@
 		<nav id="nav">
 			<ul>
 				<li><a href="index.jsp">Home</a></li>
+				<li><a href="sample.jsp">Sample Plans</a></li>
 				<li><a href="calcapp.jsp">Calculator</a></li>
 			</ul>
 		</nav>
@@ -36,7 +37,7 @@
 				<h2>Create Your Meals</h2>
 				<p>organize it to your style</p>
 			</header>
-			<a href="#" class="image fit"><img src="images/pic09.jpg" alt=""></a>
+			<!-- <a href="#" class="image fit"><img src="images/pic09.jpg" alt=""></a>  -->
 		</div>
 	</section>
 	
