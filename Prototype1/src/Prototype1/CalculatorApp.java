@@ -99,11 +99,12 @@ public class CalculatorApp extends HttpServlet {
 		"				</nav>\n" + 
 		"			</header>");
 				
-//				out.println(
-//				"<form action=\"healthApp\" target=\"_SELF\" method=\"POST\">" +
-//						"<button type=\"submit\">Search Page</button>" +
-//						"<input hidden type=\"text\" name=\"userName\" value=\"" + username + "\">" +
-//		    	"</form>");
+				// Help navigation back to health app
+				out.println(
+				"<form action=\"healthApp\" target=\"_SELF\" method=\"POST\">" +
+						"<button type=\"submit\">Search Page</button>" +
+						"<input hidden type=\"text\" name=\"userName\" value=\"" + username + "\">" +
+		    	"</form>");
 				
 				out.println(
 				"<section><div class='table-wrapper'>" +
