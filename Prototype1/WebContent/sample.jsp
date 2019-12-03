@@ -35,8 +35,14 @@
 	<div class="search-container">
 		<form action="sample.jsp" method="get">
 			<select name="prebuiltid">
-				<option value="sample1" selected>Plan 1</option>
-				<option value="sample2">Plan 2</option>
+				<option value="sample1" selected>Spaghetti with Meatballs & Garlic Bread (protein)</option>
+				<option value="sample2">Grilled Tuna Teriyaki (low fat)</option>
+				<option value="sample3">Szechwan Shrimp (low fat)</option>
+				<option value="sample4">Bacon Egg cups (low carb)</option>
+				<option value="sample5">Scrambled Eggs (low carb)</option>
+				<option value="sample6">Red Lentil Curry (vegetarian)</option>
+				<option value="sample7">Chickpea Curry (vegetarian)</option>
+				<option value="sample8">Spaghetti Squash w/ Focaccia (vegetarian)</option>
 			</select>
 			<button type="submit" class="button" name="view" value="view">View plan</button>
 			<button type="submit" class="button" name="add" value="add">Add to my plan</button>
