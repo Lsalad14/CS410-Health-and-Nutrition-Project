@@ -779,7 +779,7 @@
 			table.alt tfoot {
 				border-top: 0;
 			}
-			
+
 /* Tooltip container */
 .tooltip {
 	position: relative;
@@ -787,27 +787,51 @@
 	border-bottom: 1px dotted black;
 }
 
-/* Tooltip text */
 .tooltip .tooltiptext {
-	visibility: hidden;
-	width: 200px;
-	top: -5px;
-	left: 105%;
-	background-color: black;
-	color: #fff;
-	text-align: left;
-	padding: 5px 0;
-	border-radius: 6px;
-	
-	/* Position of tooltip text */
-	position: absolute;
-	z-index: 1;
+  top: -3px;
+  left: 100%; /*making the hover appear on the right side of the works  */
 }
 
-/* Show tooltip when mouse hover over */
-.tooltip:hover .tooltiptext {
-	visibility: visible;
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+   background-image: url("hoverBackgroundImage.jpeg"); /*Hover Background Image*/
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
 }
+
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent red transparent transparent;/*color of the arrow */
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext {	/* animation of fading */
+  opacity: 0;
+  transition: opacity 1s; /* how long it takes to fade*/
+}
+
+.tooltip:hover .tooltiptext {
+  opacity: 1;
+}
+
 
 /* Button */
 
